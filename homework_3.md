@@ -161,6 +161,7 @@ out = console_output(extra_files, 5)
 
 - первый и последний батчи
 
+-------------------------------------------
     Batch: 0
     -------------------------------------------
     +---+----------------------+-----------------------------+--------+----+
@@ -177,7 +178,8 @@ out = console_output(extra_files, 5)
     |8  |telefonia             |telephony                    |0       |=   |
     +---+----------------------+-----------------------------+--------+----+
 
-    ...
+...
+
     -------------------------------------------
     Batch: 3
     -------------------------------------------
@@ -193,6 +195,8 @@ out = console_output(extra_files, 5)
     |32 |livros_tecnicos                   |books_technical                  |0       |=   |
     |33 |casa_construcao                   |home_construction                |-2      |-   |
     +---+----------------------------------+---------------------------------+--------+----+
+
+cnhjrf
 
 ```python
 out.stop()
@@ -258,23 +262,23 @@ raw_data = spark.read \
 
 raw_data.printSchema()
 ```
-root
- |-- key: binary (nullable = true)
- |-- value: binary (nullable = true)
- |-- topic: string (nullable = true)
- |-- partition: integer (nullable = true)
- |-- offset: long (nullable = true)
- |-- timestamp: timestamp (nullable = true)
- |-- timestampType: integer (nullable = true)
+    root
+     |-- key: binary (nullable = true)
+     |-- value: binary (nullable = true)
+     |-- topic: string (nullable = true)
+     |-- partition: integer (nullable = true)
+     |-- offset: long (nullable = true)
+     |-- timestamp: timestamp (nullable = true)
+     |-- timestampType: integer (nullable = true)
 
 ```python
 raw_data.show(1)
 ```
-+----+--------------------+-------+---------+------+--------------------+-------------+
-| key|               value|  topic|partition|offset|           timestamp|timestampType|
-+----+--------------------+-------+---------+------+--------------------+-------------+
-|null|[7B 27 55 6E 6E 6...|lesson3|        0|     0|2023-03-09 04:24:...|            0|
-+----+--------------------+-------+---------+------+--------------------+-------------+
+    +----+--------------------+-------+---------+------+--------------------+-------------+
+    | key|               value|  topic|partition|offset|           timestamp|timestampType|
+    +----+--------------------+-------+---------+------+--------------------+-------------+
+    |null|[7B 27 55 6E 6E 6...|lesson3|        0|     0|2023-03-09 04:24:...|            0|
+    +----+--------------------+-------+---------+------+--------------------+-------------+
 only showing top 1 row
 
 
@@ -393,32 +397,32 @@ value_OnePiece = raw_data \
 
 value_OnePiece.printSchema()
 ```
-root
- |-- value: struct (nullable = true)
- |    |-- Unnamed: 0: string (nullable = true)
- |    |-- rank: string (nullable = true)
- |    |-- trend: string (nullable = true)
- |    |-- episode: string (nullable = true)
- |    |-- name: string (nullable = true)
- |    |-- start: string (nullable = true)
- |    |-- total_votes: string (nullable = true)
- |    |-- average_rating: string (nullable = true)
- |-- offset: long (nullable = true)
+    root
+     |-- value: struct (nullable = true)
+     |    |-- Unnamed: 0: string (nullable = true)
+     |    |-- rank: string (nullable = true)
+     |    |-- trend: string (nullable = true)
+     |    |-- episode: string (nullable = true)
+     |    |-- name: string (nullable = true)
+     |    |-- start: string (nullable = true)
+     |    |-- total_votes: string (nullable = true)
+     |    |-- average_rating: string (nullable = true)
+     |-- offset: long (nullable = true)
 
 ```python
 parsed_OnePiece = value_OnePiece.select("value.*", "offset")
 parsed_OnePiece.printSchema()
 ```
-root
- |-- Unnamed: 0: string (nullable = true)
- |-- rank: string (nullable = true)
- |-- trend: string (nullable = true)
- |-- episode: string (nullable = true)
- |-- name: string (nullable = true)
- |-- start: string (nullable = true)
- |-- total_votes: string (nullable = true)
- |-- average_rating: string (nullable = true)
- |-- offset: long (nullable = true)
+    root
+     |-- Unnamed: 0: string (nullable = true)
+     |-- rank: string (nullable = true)
+     |-- trend: string (nullable = true)
+     |-- episode: string (nullable = true)
+     |-- name: string (nullable = true)
+     |-- start: string (nullable = true)
+     |-- total_votes: string (nullable = true)
+     |-- average_rating: string (nullable = true)
+     |-- offset: long (nullable = true)
 
 - приведение типов
 ```python
@@ -516,9 +520,9 @@ out.stop()
 ```
 - завершили на 34
 
-...
+
     Batch: 2
-    -------------------------------------------
+-------------------------------------------
     +----------+------+-----+-------+--------------------+-----+-----------+--------------+------+
     |Unnamed: 0|  rank|trend|episode|                name|start|total_votes|average_rating|offset|
     +----------+------+-----+-------+--------------------+-----+-----------+--------------+------+
@@ -533,17 +537,17 @@ out = console_output_checkpointed(parsed_typed_OnePiece, 5)
 out.stop()
 ```
 - начали с 35
-Batch: 3
+    Batch: 3
 -------------------------------------------
-+----------+------+-----+-------+--------------------+-----+-----------+--------------+------+
-|Unnamed: 0|  rank|trend|episode|                name|start|total_votes|average_rating|offset|
-+----------+------+-----+-------+--------------------+-----+-----------+--------------+------+
-|       107|56.555|    1|    108|Kyoufu no Bananaw...| 2002|        180|           8.1|    35|
-|       110|59.499|    1|    111|Kiseki e no Shiss...| 2002|        182|           7.8|    36|
-|       113| 58.35|    3|    114|Nakama no Yume ni...| 2002|        182|           7.9|    37|
-|       116| 57.41|    3|    117|Nami no Senpuu Ch...| 2002|        181|           8.0|    38|
-|       119|59.563|    2|    120|Tatakai wa Owatta...| 2002|        177|           7.9|    39|
-+----------+------+-----+-------+--------------------+-----+-----------+--------------+------+
+    +----------+------+-----+-------+--------------------+-----+-----------+--------------+------+
+    |Unnamed: 0|  rank|trend|episode|                name|start|total_votes|average_rating|offset|
+    +----------+------+-----+-------+--------------------+-----+-----------+--------------+------+
+    |       107|56.555|    1|    108|Kyoufu no Bananaw...| 2002|        180|           8.1|    35|
+    |       110|59.499|    1|    111|Kiseki e no Shiss...| 2002|        182|           7.8|    36|
+    |       113| 58.35|    3|    114|Nakama no Yume ni...| 2002|        182|           7.9|    37|
+    |       116| 57.41|    3|    117|Nami no Senpuu Ch...| 2002|        181|           8.0|    38|
+    |       119|59.563|    2|    120|Tatakai wa Owatta...| 2002|        177|           7.9|    39|
+    +----------+------+-----+-------+--------------------+-----+-----------+--------------+------+
 
 - в другой консоли - папка с данными о чекпоинтах
 ```bash
