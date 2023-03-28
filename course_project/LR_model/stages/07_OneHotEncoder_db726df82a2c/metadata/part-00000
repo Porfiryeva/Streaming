@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.OneHotEncoderModel","timestamp":1679976836946,"sparkVersion":"3.3.1","uid":"OneHotEncoder_db726df82a2c","paramMap":{"inputCols":["day_of_weekIndex"],"outputCols":["day_of_weekclassVec"],"handleInvalid":"keep"},"defaultParamMap":{"dropLast":true,"handleInvalid":"error","outputCol":"OneHotEncoder_db726df82a2c__output"}}
