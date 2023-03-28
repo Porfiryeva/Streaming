@@ -230,6 +230,7 @@ cqlsh:traffic_ml> SELECT count_point_id, day_of_week, road_type, p_accident FROM
 - вывод скрипта
 
 --
+
     ---------I've got new batch--------
     This is what I've got from Kafka:
     +--------------+-----------+------------+--------------+--------------+-----------------+----+--------+------+------+
